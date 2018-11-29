@@ -701,7 +701,7 @@
         "content": "Но меня это не заботит.",
         "index": 30,
         "emotion": "normal",
-        "feedback": null,
+        "feedback": "{\"pause\":2500,\"delay\":2000,\"author\":\"Незнакомец\"}",
         "score": null,
         "scores": null,
         "color": null,
