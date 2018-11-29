@@ -41,7 +41,7 @@ code {
 .status-bar-ios {
   background: #000000;
   position: fixed;
-  height: 22px;
+  height: 24px;
   width: 100%;
   z-index: 9999999;
   box-shadow: 0 2px 16px #000000;
@@ -75,104 +75,149 @@ code {
   }
 }
 
-.intro-scene {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
+.intro-scene-frost {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #000000;
-  padding-bottom: 25px;
-}
-.intro-scene .intro-pic {
-  position: relative;
-  width: 100%;
-  height: 50%;
-  background-image: url(assets/images/earth.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-}
-.intro-scene .intro-pic .susan-photo {
-  position: absolute;
-  width: 110px;
-  height: 165px;
-  bottom: 0;
-  margin-left: -55px;
-  left: 50%;
-  background-image: url(assets/images/susan-intro.png);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.intro-scene .intro-pic .story-title {
-  z-index: 999;
-}
-.intro-scene .intro-pic-shadow {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  box-shadow: inset 0 35px 35px 0 #000000, inset 0 -30px 35px 0 #000000;
+  overflow-y: auto;
 }
-.intro-scene .intro-text {
-  padding: 0 15px;
+.intro-scene-frost .frost-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
-.intro-scene .intro-text p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+.intro-scene-frost .frost-description {
+  padding: 5px 30px 0;
+}
+.intro-scene-frost .frost-description p {
   color: #FFFFFF;
-  text-align: center;
-  line-height: 21px;
-}
-.intro-scene .start-story {
-  width: 200px;
-  padding: 20px 15px;
-  background-image: linear-gradient(-134deg, #3023AE 0%, #C86DD7 100%);
-  border-radius: 4px;
-  /* Начать историю: */
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  line-height: 23px;
+  text-align: justify;
+}
+.intro-scene-frost .frost-start {
+  position: relative;
+  overflow: hidden;
+  min-height: 18px;
+  margin-top: 10px;
+  padding: 15px;
+  min-width: 180px;
+  text-align: center;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
   font-weight: 700;
   color: #FFFFFF;
-  text-align: center;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -ms-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  background-image: linear-gradient(45deg, rgba(69, 69, 69, 0.23) 0%, #282626 100%, #212121 100%);
+  background-color: black;
+  border: 1px solid #393939;
+  border-radius: 3px;
+  z-index: 999;
 }
-.intro-scene .start-story.pressed {
-  animation-name: startButtonPressed;
-  animation-duration: 0.8s;
+.intro-scene-frost .frost-start .black-hole {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #000000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
 }
-@keyframes startButtonPressed {
+.intro-scene-frost .frost-start.activated {
+  animation: frostStartAnim 500ms ease;
+}
+.intro-scene-frost .frost-start.activated .black-hole {
+  animation: blackHole 800ms;
+}
+.intro-scene-frost .frost-restart {
+  position: relative;
+  overflow: hidden;
+  min-height: 16px;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10px;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  border-radius: 3px;
+}
+.intro-scene-frost .frost-restart .black-hole {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.intro-scene-frost .frost-restart.activated {
+  animation: frostStartAnim 500ms ease;
+}
+.intro-scene-frost .frost-restart.activated .black-hole {
+  animation: blackHole 800ms;
+}
+.intro-scene-frost .frost-picture {
+  position: fixed;
+  width: 100%;
+  height: 25%;
+  background-image: url(assets/images/winter-bw.png);
+  background-size: cover;
+  background-position: top center;
+  bottom: 0;
+}
+@keyframes blackHole {
   0% {
-    box-shadow: none;
-  }
-  20% {
-    box-shadow: 0 7px 25px rgba(200, 109, 215, 0.5);
-    transform: translateZ(-10px) scale(0.95);
-  }
-  60% {
-    transform: translateZ(0) scale(1);
+    width: 0;
+    height: 0;
+    opacity: 1;
   }
   100% {
-    box-shadow: 0 7px 55px rgba(200, 109, 215, 0);
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+@keyframes frostStartAnim {
+  0% {
+    transform: translateZ(0) scale(1);
+  }
+  60% {
+    transform: translateZ(15px) scale(1.05);
+  }
+  100% {
+    transform: translateZ(0) scale(1);
   }
 }
 
+.darker-scene {
+  z-index: 9999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.darker-scene.fadeOut {
+  animation: DarkerFadeOut 3s;
+}
+.darker-scene.fadeIn {
+  animation: DarkerFadeIn 3s;
+}
 .darker {
-  animation-duration: 5s;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -180,12 +225,6 @@ code {
   right: 0;
   background: black;
   z-index: 999999;
-}
-.darker.fadeOut {
-  animation: DarkerFadeOut 4s;
-}
-.darker.fadeIn {
-  animation: DarkerFadeIn 4s;
 }
 @keyframes DarkerFadeOut {
   0% {
@@ -211,18 +250,20 @@ code {
   right: 0;
   bottom: 0;
   background: #000000;
-  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .guide #episode-maintitle {
   font-family: 'Roboto', sans-serif;
-  font-size: 28px;
+  font-size: 32px;
+  line-height: 36px;
   margin: 0;
   text-align: center;
   color: #FFFFFF;
   font-weight: 700;
+  padding: 0 15px;
   text-transform: uppercase;
 }
 .guide #episode-subtitle {
@@ -230,7 +271,7 @@ code {
   font-size: 18px;
   text-align: center;
   margin: 0 0 10px 0;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -238,7 +279,7 @@ code {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   text-align: center;
-  padding: 0 15px;
+  padding: 0 30px;
   color: #FFFFFF;
   line-height: 1.5em;
 }
@@ -247,7 +288,7 @@ code {
   display: flex;
   overflow-y: auto;
   flex-direction: column;
-  padding: 25px 15px 20px;
+  padding: 35px 15px 35px;
   background: transparent;
   min-height: 150px;
 }
@@ -256,7 +297,7 @@ code {
   margin-bottom: 20px;
 }
 .message-text {
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(45deg, rgba(101, 101, 101, 0.25) 0%, #3C3A3A 100%, #212121 100%);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
   border-radius: 6px 6px 6px 0px;
   padding: 15px;
@@ -308,7 +349,6 @@ code {
 .reply-box {
   animation-name: repliesFadeIn;
   animation-duration: 600ms;
-  margin-top: 10px;
   margin-bottom: 20px;
 }
 .reply-box.answered .replies--button:not(.activated) {
@@ -324,7 +364,7 @@ code {
   cursor: default !important;
 }
 .reply-box.answered .replies--button:not(.activated):active {
-  margin-top: 0 !important;
+  transform: translateY(0px) !important;
 }
 .reply-box .hint {
   font-size: 12px;
@@ -339,7 +379,7 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
 }
 .replies--button {
   background: linear-gradient(180deg, #FFF4B9 0%, #D9B351 100%);
@@ -348,32 +388,84 @@ code {
   border-radius: 4px;
   padding: 10px 15px;
   margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.replies--button .black-hole {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #9DC5F3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.replies--button p {
   /* Text */
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 14px;
   text-align: center;
+  line-height: 100%;
   color: #5F470C;
-  text-shadow: 0px 1px 0px #FFF7CE;
+  text-shadow: 0 1px 0 #FFF7CE;
+  margin: 0;
 }
 .replies--button:last-child {
-  margin-right: 0px;
+  margin-right: 0;
 }
 .replies--button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
-.replies--button:active {
-  margin-top: 2px;
-  box-shadow: 0px 1px 0px #644A05;
-}
 .replies--button.activated {
-  margin-top: 2px;
   box-shadow: 0px 1px 0px #644A05;
 }
 .replies--button.activated:hover {
   cursor: default;
   opacity: 1;
+}
+.replies--button.blues {
+  background-image: linear-gradient(-180deg, #7DB0EA 0%, #5181B8 100%);
+  box-shadow: 0 4px 0 0 #22466F, inset 0 1px 0 0 #9DC5F3, inset 0 -1px 0 0 #75A4DB;
+  border-radius: 3px;
+  border: none;
+  /* Text */
+}
+.replies--button.blues p {
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1px 1px #436A97;
+}
+.replies--button.blues:active {
+  box-shadow: 0 1px 0 0 #22466F, inset 0 1px 0 0 #9DC5F3, inset 0 -1px 0 0 #75A4DB;
+  margin-top: 0 !important;
+  transform: translateY(3px);
+}
+.replies--button.blues.activated {
+  margin-top: 0;
+  border: 1px solid #7DB7F8;
+  box-shadow: none;
+  background: black;
+  animation: frostStartAnim 500ms ease;
+}
+.replies--button.blues.activated p {
+  color: #7DB7F8;
+  text-shadow: none;
+}
+.replies--button.blues.activated .black-hole {
+  animation: blackHole 800ms;
+}
+.user-no-select {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .wave {
   position: relative;
@@ -419,7 +511,7 @@ code {
     opacity: 0;
     transform: translateZ(20px) scale(1.05) translateY(-20px);
   }
-  70% {
+  80% {
     opacity: 1;
   }
   100% {
@@ -445,13 +537,273 @@ code {
   }
 }
 
-.gradient {
+.hero-busy {
+  padding: 15px 15px 15px 10px;
+  position: relative;
+  background-image: linear-gradient(45deg, #29323C 0%, #485563 100%);
+  box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  animation-name: fadeInBusy;
+  animation-duration: 1s;
+}
+.hero-busy .clock-icon {
+  opacity: 0.3;
+  animation-name: iconBlink;
+  animation-duration: 4.5s;
+  animation-iteration-count: infinite;
+}
+.hero-busy .info-busy {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.hero-busy .open-notifications {
+  color: #FFFFFF;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
+  padding: 12px;
+  margin-top: 8px;
+  background-image: linear-gradient(-180deg, #7DB0EA 0%, #5181B8 100%);
+  border-radius: 4px;
+}
+.hero-busy p.busy-title {
+  font-weight: 700;
+  padding-bottom: 4px;
+}
+.hero-busy p {
+  padding: 0 0 0 10px;
+  margin: 0;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+@keyframes iconBlink {
+  0% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@keyframes fadeInBusy {
+  from {
+    opacity: 0;
+    transform: translateZ(30px) translateY(-40px) scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0) translateY(0) scale(1);
+  }
+}
+
+.introduceYourself {
+  background-image: linear-gradient(45deg, rgba(101, 101, 101, 0.25) 0%, #3C3A3A 100%, #212121 100%);
+  border-radius: 8px;
+  padding: 20px 15px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  animation-name: messageFadeIn;
+  animation-duration: 1s;
+}
+.introduceYourself.approved {
+  animation: approvedAnimation 800ms;
+  background-image: linear-gradient(0deg, #BDC2E8 0%, #E6DEE9 100%);
+}
+.introduceYourself .approvedName {
+  display: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #323048;
+}
+.introduceYourself .approvedName-description {
+  padding-left: 10px;
+}
+.introduceYourself .approvedName.visible {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.introduceYourself .black-hole {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.introduceYourself .black-hole.pressed {
+  animation: blackHole 1000ms;
+}
+.introduceYourself .title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #E8E8E8;
+}
+.introduceYourself .description {
+  /* Используя нано-техно: */
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #FDFDFD;
+  line-height: 19px;
+  padding-top: 7px;
+}
+.introduceYourself .description p {
+  margin: 0;
+  padding: 0;
+}
+.introduceYourself .inputName {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+}
+.introduceYourself .inputName input {
+  width: 100%;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 13px 10px;
+  background: #1D1D1D;
+  border: 1px solid #000000;
+  box-shadow: 0 1px 0 0 #5C5C5C;
+  border-radius: 4px;
+}
+.introduceYourself .approveName {
+  background-image: linear-gradient(-180deg, #7DB0EA 0%, #5181B8 100%);
+  border: 1px solid #0C2037;
+  box-shadow: 0 3px 0 0 #173D6A, 0 4px 0 0 #02080E, inset 0 1px 0 0 #A6CCF8, inset 0 -1px 0 0 #70A2DA;
+  border-radius: 4px;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  max-width: 100px;
+  margin: 12px auto 0 auto;
+  overflow: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.introduceYourself .approveName span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1px 1px #436A97;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.introduceYourself .approveName.pressed {
+  animation: approveNamePressed 250ms;
+  box-shadow: 0 1px 0 0 #173D6A, 0 4px 0 0 #02080E, inset 0 2px 0 0 #A6CCF8, inset 0 -2px 0 0 #70A2DA;
+  transform: translateY(3px);
+}
+.introduceYourself .approveName.disabled {
+  background: #1D1D1D;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+.introduceYourself .approveName.disabled span {
+  text-shadow: none;
+  opacity: 0.3;
+}
+@keyframes approvedAnimation {
+  0% {
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    transform: translateZ(30px) scale(1.1);
+  }
+  100% {
+    transform: translateZ(0) scale(1);
+  }
+}
+@keyframes approveNamePressed {
+  0% {
+    box-shadow: 0 3px 0 0 #173D6A, 0 4px 0 0 #02080E, inset 0 2px 0 0 #A6CCF8, inset 0 -2px 0 0 #70A2DA;
+    transform: translateY(0);
+  }
+  100% {
+    box-shadow: 0 1px 0 0 #173D6A, 0 4px 0 0 #02080E, inset 0 2px 0 0 #A6CCF8, inset 0 -2px 0 0 #70A2DA;
+    transform: translateY(3px);
+  }
+}
+
+.achievement-scene {
   position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(526px at 50.13% 38.53%, rgba(75, 108, 127, 0.27) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  z-index: 99999;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.achievement-scene .achievement-push {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 10px;
+  background-image: linear-gradient(45deg, #29323C 0%, #485563 100%);
+  box-shadow: 0 10px 48px 20px #000000;
+  margin: 35px 30px 0 10px;
+  border-radius: 8px;
+  animation: achievementShow 350ms;
+}
+.achievement-scene .achievement-push .achievement-icon {
+  margin: 10px 10px;
+}
+.achievement-scene .achievement-push .achievement-description h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #FFFFFF;
+  font-weight: 700;
+  padding-right: 10px;
+  padding-top: 2px;
+  margin: 0 0 10px 0;
+}
+.achievement-scene .achievement-push .achievement-description h1 {
+  opacity: 0.81;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #FFFFFF;
+  font-weight: 400;
+  margin: 10px 0 0 0;
+}
+.achievement-scene .achievement-push .achievement-description p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 21px;
+  padding-right: 20px;
+}
+@keyframes achievementShow {
+  0% {
+    opacity: 0;
+    transform: scale(1.1) translateZ(20px) translateX(-100vw);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateZ(0px) translateY(0);
+  }
 }
 
