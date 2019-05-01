@@ -7,7 +7,7 @@
     "url": "https://www.branchtrack.com/projects/cn4b09hy",
     "embed_id": "btproject-cn4b09hy",
     "embed_url": "https://www.branchtrack.com/projects/cn4b09hy/embed",
-    "embed_code": "<iframe width=\"800\" height=\"500\" src=\"https://www.branchtrack.com/projects/cn4b09hy/embed\" frameborder=\"0\" allowfullscreen></iframe>",
+    "embed_code": "\u003ciframe width=\"800\" height=\"500\" src=\"https://www.branchtrack.com/projects/cn4b09hy/embed\" frameborder=\"0\" allowfullscreen\u003e\u003c/iframe\u003e",
     "randomize_choices_order": false,
     "multiple_scoring": false,
     "disable_emotion_meter": false,
@@ -420,7 +420,7 @@
       {
         "id": 313873,
         "kind": "regular",
-        "content": "А я всегда готов принять столь щедрые предложения.",
+        "content": "А деньги мне нужны.",
         "index": 18,
         "emotion": "normal",
         "feedback": "{\"pause\":6000,\"delay\":2000,\"author\":\"Незнакомец\"}",
@@ -934,7 +934,7 @@
       {
         "id": 313949,
         "kind": "regular",
-        "content": "2018! Хочешь сказать, ты из будущего?",
+        "content": "${(new Date()).getFullYear()}! Хочешь сказать, ты из будущего?",
         "index": 43,
         "emotion": "normal",
         "feedback": "{\"pause\":2000,\"delay\":3000,\"author\":\"Незнакомец\"}",
@@ -958,7 +958,7 @@
       {
         "id": 313950,
         "kind": "regular",
-        "content": "2018! Хочешь сказать, ты из будущего?",
+        "content": "${(new Date()).getFullYear()}! Хочешь сказать, ты из будущего?",
         "index": 44,
         "emotion": "normal",
         "feedback": "{\"pause\":2000,\"delay\":3000,\"author\":\"Незнакомец\"}",
@@ -1121,7 +1121,7 @@
       {
         "id": 313960,
         "kind": "regular",
-        "content": "${((new Date).getMonth() === 11 && (new Date).getDate() >= 26 ? 'Это уже произошло, дружище! Такое предсказание и я могу сделать.' : 'Подобное предсказание и я могу сделать. Дела, действительно, плохи.')}",
+        "content": "${((new Date).getMonth() === 11 \u0026\u0026 (new Date).getDate() \u003e= 26 ? 'Это уже произошло, дружище! Такое предсказание и я могу сделать.' : 'Подобное предсказание и я могу сделать. Дела, действительно, плохи.')}",
         "index": 51,
         "emotion": "normal",
         "feedback": "{\"pause\":3000,\"delay\":4000,\"author\":\"Незнакомец\"}",
@@ -1542,29 +1542,6 @@
         "index": 70,
         "emotion": "normal",
         "feedback": "{\"pause\":5000,\"delay\":3000,\"author\":\"Незнакомец\"}",
-        "score": null,
-        "scores": null,
-        "color": null,
-        "attachment_id": null,
-        "voice_id": null,
-        "video_id": null,
-        "default_edge_index": null,
-        "show_edges_delay": null,
-        "character_id": null,
-        "background_id": null,
-        "character_behavior": null,
-        "background_behavior": null,
-        "edges": [
-          476862
-        ]
-      },
-      {
-        "id": 314099,
-        "kind": "regular",
-        "content": "Конец истории.",
-        "index": 72,
-        "emotion": "normal",
-        "feedback": "{\"pause\":5000,\"delay\":500,\"author\":\"Незнакомец\"}",
         "score": null,
         "scores": null,
         "color": "#5b32cc",
@@ -2140,7 +2117,7 @@
       {
         "id": 314670,
         "kind": "regular",
-        "content": "${{$STORY.SetHeroBusy(60);}}\nПойду вздремну. Выйду на связь, как только будет возможность. Доброго ${((new Date).getHours() > 16 ? 'вечера' : 'дня')}, ${$EXTRAS.userName ? $EXTRAS.userName : 'дружище'}!",
+        "content": "Пойду вздремну. Выйду на связь, как только будет возможность. Доброго ${((new Date).getHours() \u003e 16 ? ' вечера' : ' дня')}, ${$EXTRAS.userName ? $EXTRAS.userName : ' дружище'}!",
         "index": 99,
         "emotion": "normal",
         "feedback": "{\"pause\":5000, \"delay\": 3000}",
@@ -2156,9 +2133,7 @@
         "background_id": null,
         "character_behavior": null,
         "background_behavior": null,
-        "edges": [
-          477622
-        ]
+        "edges": []
       },
       {
         "id": 314671,
@@ -2325,12 +2300,12 @@
         ]
       },
       {
-        "id": 314680,
+        "id": 342446,
         "kind": "regular",
-        "content": "Привет!",
-        "index": 109,
+        "content": "Нет, я слышал о технологических прорывах за рубежом. Но наш 91-ый год, видимо, прошёл мимо них.",
+        "index": 111,
         "emotion": "normal",
-        "feedback": null,
+        "feedback": "{\"pause\":3000,\"delay\":3000,\"author\":\"Незнакомец\"}",
         "score": null,
         "scores": null,
         "color": null,
@@ -2343,7 +2318,10 @@
         "background_id": null,
         "character_behavior": null,
         "background_behavior": null,
-        "edges": []
+        "edges": [
+          517069,
+          517070
+        ]
       }
     ],
     "edges": [
@@ -3036,7 +3014,7 @@
         "content": "${{NEXT_NODE}}",
         "index": 77,
         "from_node_id": 313981,
-        "to_node_id": 313921,
+        "to_node_id": 342446,
         "voice_id": null,
         "position": 1
       },
@@ -3127,15 +3105,6 @@
         "index": 87,
         "from_node_id": 314092,
         "to_node_id": 314094,
-        "voice_id": null,
-        "position": 1
-      },
-      {
-        "id": 476862,
-        "content": "${{NEXT_NODE}}",
-        "index": 88,
-        "from_node_id": 314094,
-        "to_node_id": 314099,
         "voice_id": null,
         "position": 1
       },
@@ -3509,13 +3478,22 @@
         "position": 1
       },
       {
-        "id": 477622,
-        "content": "${{NEXT_NODE}}",
-        "index": 135,
-        "from_node_id": 314670,
-        "to_node_id": 314680,
+        "id": 517069,
+        "content": "1991 год!?",
+        "index": 136,
+        "from_node_id": 342446,
+        "to_node_id": 313926,
         "voice_id": null,
         "position": 1
+      },
+      {
+        "id": 517070,
+        "content": "Ты серьезно?",
+        "index": 137,
+        "from_node_id": 342446,
+        "to_node_id": 313927,
+        "voice_id": null,
+        "position": 2
       }
     ],
     "characters": [],
